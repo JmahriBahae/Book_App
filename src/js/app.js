@@ -1,8 +1,7 @@
-const { invoke } = window.__TAURI__.tauri;
-const { open } = window.__TAURI__.dialog;
-const { appDataDir, join } = window.__TAURI__.path;
-
 import { translations, GENRES } from './translations.js';
+
+// Tauri API - initialized after DOM loads
+let invoke, open, join;
 
 // State
 let currentLanguage = 'fr';
@@ -54,9 +53,19 @@ const helpModal = document.getElementById('help-modal');
 const helpContent = document.getElementById('help-content');
 const deleteModal = document.getElementById('delete-modal');
 
+// Initialize Tauri APIs
+function initTauriAPIs() {
+    invoke = window.__TAURI__.tauri.invoke;
+    open = window.__TAURI__.dialog.open;
+    join = window.__TAURI__.path.join;
+}
+
 // Initialize
 async function init() {
     try {
+        // Wait for Tauri to be ready
+        initTauriAPIs();
+        
         settings = await invoke('get_settings');
         
         if (settings) {
