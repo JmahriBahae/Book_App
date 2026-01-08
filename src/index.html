@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookApp</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- Setup Screen (First Launch) -->
+    <div id="setup-screen" class="screen hidden">
+        <div class="setup-container">
+            <h1 id="setup-title">Configuration initiale</h1>
+            <p id="setup-desc">Choisissez l'emplacement où vos données seront enregistrées.</p>
+            
+            <div class="setup-form">
+                <div class="form-group">
+                    <label id="setup-path-label">Dossier de données:</label>
+                    <div class="path-selector">
+                        <input type="text" id="data-path-input" readonly>
+                        <button id="browse-btn" class="btn btn-secondary">Parcourir</button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label id="setup-lang-label">Langue de l'interface:</label>
+                    <select id="setup-language">
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                        <option value="ar">العربية</option>
+                    </select>
+                </div>
+                
+                <button id="setup-confirm-btn" class="btn btn-primary">Confirmer</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Folder Missing Screen -->
+    <div id="error-screen" class="screen hidden">
+        <div class="setup-container">
+            <h1 id="error-title">⚠️ Dossier de données introuvable</h1>
+            <p id="error-desc">Le dossier de données configuré n'existe plus. Veuillez reconfigurer l'emplacement.</p>
+            <p id="error-path-label">Chemin configuré: <span id="error-path"></span></p>
+            <button id="reconfigure-btn" class="btn btn-primary">Reconfigurer</button>
+        </div>
+    </div>
+
+    <!-- Main App Screen -->
+    <div id="main-screen" class="screen hidden">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="app-title">BookApp</h1>
+            <div class="header-actions">
+                <button id="stats-btn" class="btn btn-icon" title="Statistiques">📊</button>
+                <button id="settings-btn" class="btn btn-icon" title="Paramètres">⚙️</button>
+                <button id="help-btn" class="btn btn-icon" title="Aide">❓</button>
+            </div>
+        </header>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="search-filter">
+                <input type="text" id="search-input" class="search-input" placeholder="Rechercher...">
+                <select id="genre-filter" class="genre-filter">
+                    <option value="" id="filter-all">Tous les genres</option>
+                </select>
+                <select id="read-filter" class="read-filter">
+                    <option value="" id="filter-all-status">Tous</option>
+                    <option value="read" id="filter-read">Lu</option>
+                    <option value="unread" id="filter-unread">Non lu</option>
+                </select>
+                <button id="sort-btn" class="btn btn-secondary sort-btn" title="Trier A-Z">
+                    <span id="sort-label">A-Z</span>
+                </button>
+            </div>
+            <button id="add-book-btn" class="btn btn-primary">+ Ajouter un livre</button>
+        </div>
+
+        <!-- Books List -->
+        <div class="books-container">
+            <div id="books-list" class="books-list"></div>
+            <div id="empty-state" class="empty-state hidden">
+                <p id="empty-message">Aucun livre dans votre bibliothèque.</p>
+                <p id="empty-hint">Cliquez sur "Ajouter un livre" pour commencer.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Book Modal -->
+    <div id="book-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Ajouter un livre</h2>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <form id="book-form">
+                <input type="hidden" id="book-id">
+                
+                <div class="form-group">
+                    <label for="book-title" id="label-title">Titre *</label>
+                    <input type="text" id="book-title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="book-author" id="label-author">Auteur</label>
+                    <input type="text" id="book-author">
+                </div>
+                
+                <div class="form-group">
+                    <label for="book-genre" id="label-genre">Genre</label>
+                    <select id="book-genre">
+                        <option value="">-- Sélectionner --</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="book-notes" id="label-notes">Notes</label>
+                    <textarea id="book-notes" rows="3"></textarea>
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="book-is-read">
+                        <span id="label-read">Lu</span>
+                    </label>
+                </div>
+
+                <div id="duplicate-warning" class="warning hidden">
+                    <span id="duplicate-text">⚠️ Un livre avec le même titre et auteur existe déjà.</span>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" id="cancel-btn" class="btn btn-secondary">Annuler</button>
+                    <button type="submit" id="save-btn" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Statistics Modal -->
+    <div id="stats-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="stats-title">Statistiques</h2>
+                <button class="modal-close" id="stats-close">&times;</button>
+            </div>
+            <div id="stats-content" class="stats-content"></div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="settings-title">Paramètres</h2>
+                <button class="modal-close" id="settings-close">&times;</button>
+            </div>
+            <div class="settings-content">
+                <div class="form-group">
+                    <label id="settings-lang-label">Langue de l'interface:</label>
+                    <select id="settings-language">
+                        <option value="fr">Français</option>
+                        <option value="en">English</option>
+                        <option value="ar">العربية</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label id="settings-path-label">Dossier de données:</label>
+                    <div class="path-selector">
+                        <input type="text" id="settings-data-path" readonly>
+                        <button id="settings-browse-btn" class="btn btn-secondary">Parcourir</button>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="settings-save-btn" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal hidden">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2 id="help-title">Aide</h2>
+                <button class="modal-close" id="help-close">&times;</button>
+            </div>
+            <div id="help-content" class="help-content"></div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-modal" class="modal hidden">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2 id="delete-title">Confirmer la suppression</h2>
+                <button class="modal-close" id="delete-close">&times;</button>
+            </div>
+            <p id="delete-message">Êtes-vous sûr de vouloir supprimer ce livre ?</p>
+            <div class="modal-actions">
+                <button id="delete-cancel-btn" class="btn btn-secondary">Annuler</button>
+                <button id="delete-confirm-btn" class="btn btn-danger">Supprimer</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
