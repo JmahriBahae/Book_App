@@ -52,9 +52,18 @@
         <header class="header">
             <h1 class="app-title">BookApp</h1>
             <div class="header-actions">
-                <button id="stats-btn" class="btn btn-icon" title="Statistiques">📊</button>
-                <button id="settings-btn" class="btn btn-icon" title="Paramètres">⚙️</button>
-                <button id="help-btn" class="btn btn-icon" title="Aide">❓</button>
+                <button id="stats-btn" class="btn btn-icon-label">
+                    <span class="icon">📊</span>
+                    <span id="stats-btn-label" class="label">Statistiques</span>
+                </button>
+                <button id="settings-btn" class="btn btn-icon-label">
+                    <span class="icon">⚙️</span>
+                    <span id="settings-btn-label" class="label">Paramètres</span>
+                </button>
+                <button id="help-btn" class="btn btn-icon-label">
+                    <span class="icon">❓</span>
+                    <span id="help-btn-label" class="label">Aide</span>
+                </button>
             </div>
         </header>
 
@@ -197,7 +206,9 @@
                 <h2 id="delete-title">Confirmer la suppression</h2>
                 <button class="modal-close" id="delete-close">&times;</button>
             </div>
-            <p id="delete-message">Êtes-vous sûr de vouloir supprimer ce livre ?</p>
+            <div class="modal-body">
+                <p id="delete-message">Êtes-vous sûr de vouloir supprimer ce livre ?</p>
+            </div>
             <div class="modal-actions">
                 <button id="delete-cancel-btn" class="btn btn-secondary">Annuler</button>
                 <button id="delete-confirm-btn" class="btn btn-danger">Supprimer</button>

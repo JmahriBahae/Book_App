@@ -85,6 +85,15 @@ const translations = {
         // Date
         addedOn: "Ajouté le",
 
+        // Header buttons
+        statsBtn: "Statistiques",
+        settingsBtn: "Paramètres",
+        helpBtn: "Aide",
+
+        // Book card actions
+        editBtn: "Modifier",
+        deleteBtn: "Supprimer",
+
         // Genres
         genres: {
             "Fiction": "Fiction",
@@ -187,6 +196,15 @@ const translations = {
         // Date
         addedOn: "Added on",
 
+        // Header buttons
+        statsBtn: "Statistics",
+        settingsBtn: "Settings",
+        helpBtn: "Help",
+
+        // Book card actions
+        editBtn: "Edit",
+        deleteBtn: "Delete",
+
         // Genres
         genres: {
             "Fiction": "Fiction",
@@ -288,6 +306,15 @@ const translations = {
 
         // Date
         addedOn: "أضيف في",
+
+        // Header buttons
+        statsBtn: "الإحصائيات",
+        settingsBtn: "الإعدادات",
+        helpBtn: "مساعدة",
+
+        // Book card actions
+        editBtn: "تعديل",
+        deleteBtn: "حذف",
 
         // Genres
         genres: {
@@ -539,6 +566,11 @@ function applyLanguage() {
     // Help modal
     setText('help-title', t.helpTitle);
     
+    // Header button labels
+    setText('stats-btn-label', t.statsBtn);
+    setText('settings-btn-label', t.settingsBtn);
+    setText('help-btn-label', t.helpBtn);
+    
     // Empty state
     setText('empty-message', t.emptyMessage);
     setText('empty-hint', t.emptyHint);
@@ -667,8 +699,8 @@ function renderBooks() {
         return `
             <div class="book-card" data-id="${book.id}">
                 <div class="book-card-actions">
-                    <button class="btn-icon edit-btn" title="Edit" data-id="${book.id}">✏️</button>
-                    <button class="btn-icon delete-btn" title="Delete" data-id="${book.id}">🗑️</button>
+                    <button class="btn-icon edit-btn" title="${t.editBtn}" data-id="${book.id}">✏️</button>
+                    <button class="btn-icon delete-btn" title="${t.deleteBtn}" data-id="${book.id}">🗑️</button>
                 </div>
                 <div class="book-card-title">${escapeHtml(book.title)}</div>
                 ${book.author ? `<div class="book-card-author">${escapeHtml(book.author)}</div>` : ''}
