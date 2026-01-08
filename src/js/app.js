@@ -1,4 +1,328 @@
-import { translations, GENRES } from './translations.js';
+// Translations
+const translations = {
+    fr: {
+        // Setup
+        setupTitle: "Configuration initiale",
+        setupDesc: "Choisissez l'emplacement où vos données seront enregistrées.",
+        setupPathLabel: "Dossier de données:",
+        setupLangLabel: "Langue de l'interface:",
+        browse: "Parcourir",
+        confirm: "Confirmer",
+
+        // Error screen
+        errorTitle: "⚠️ Dossier de données introuvable",
+        errorDesc: "Le dossier de données configuré n'existe plus. Veuillez reconfigurer l'emplacement.",
+        errorPathLabel: "Chemin configuré:",
+        reconfigure: "Reconfigurer",
+
+        // Main
+        search: "Rechercher...",
+        allGenres: "Tous les genres",
+        all: "Tous",
+        read: "Lu",
+        unread: "Non lu",
+        sortAZ: "A-Z",
+        sortZA: "Z-A",
+        addBook: "+ Ajouter un livre",
+
+        // Book form
+        addBookTitle: "Ajouter un livre",
+        editBookTitle: "Modifier le livre",
+        title: "Titre *",
+        author: "Auteur",
+        genre: "Genre",
+        notes: "Notes",
+        isRead: "Lu",
+        cancel: "Annuler",
+        save: "Enregistrer",
+        duplicateWarning: "⚠️ Un livre avec le même titre et auteur existe déjà.",
+        selectGenre: "-- Sélectionner --",
+
+        // Delete
+        deleteTitle: "Confirmer la suppression",
+        deleteMessage: "Êtes-vous sûr de vouloir supprimer ce livre ?",
+        delete: "Supprimer",
+
+        // Stats
+        statsTitle: "Statistiques",
+        totalBooks: "Total",
+        booksRead: "Lus",
+        booksUnread: "Non lus",
+        byGenre: "Par genre",
+        byLanguage: "Par langue",
+        arabic: "Arabe",
+        latin: "Latin (FR/EN)",
+        notSpecified: "Non spécifié",
+
+        // Settings
+        settingsTitle: "Paramètres",
+        settingsLangLabel: "Langue de l'interface:",
+        settingsPathLabel: "Dossier de données:",
+
+        // Help
+        helpTitle: "Aide",
+        helpUsageTitle: "Comment utiliser BookApp",
+        helpUsageContent: "BookApp vous permet de gérer votre bibliothèque personnelle. Vous pouvez ajouter, modifier et supprimer des livres, ainsi que les rechercher et les filtrer.",
+        helpAddTitle: "Ajouter un livre",
+        helpAddContent: "Cliquez sur le bouton \"+ Ajouter un livre\" pour ajouter un nouveau livre. Seul le titre est obligatoire. La langue est détectée automatiquement: si le titre contient des caractères arabes, le livre sera classé en arabe, sinon en latin (français/anglais).",
+        helpSearchTitle: "Recherche et filtres",
+        helpSearchContent: "Utilisez la barre de recherche pour trouver un livre par titre ou auteur. Vous pouvez également filtrer par genre ou statut de lecture, et trier par ordre alphabétique.",
+        helpDataTitle: "Données et portabilité",
+        helpDataContent: "Vos données sont enregistrées dans le dossier que vous avez choisi lors de la configuration. Pour transférer votre bibliothèque sur un autre ordinateur, copiez le dossier BookData ainsi que l'application BookApp.exe.",
+        helpBackupTitle: "Sauvegarde",
+        helpBackupContent: "Pour sauvegarder votre bibliothèque, faites simplement une copie du dossier de données (BookData). Le fichier books.db contient toutes vos données.",
+        helpAboutTitle: "À propos",
+        helpAuthor: "Auteur:",
+        helpYear: "Année:",
+        helpLicense: "Licence:",
+        helpLicenseValue: "Utilisation libre",
+        helpTech: "Technologies:",
+
+        // Empty state
+        emptyMessage: "Aucun livre dans votre bibliothèque.",
+        emptyHint: "Cliquez sur \"Ajouter un livre\" pour commencer.",
+
+        // Date
+        addedOn: "Ajouté le",
+
+        // Genres
+        genres: {
+            "Fiction": "Fiction",
+            "Non-fiction": "Non-fiction",
+            "Science": "Science",
+            "History": "Histoire",
+            "Biography": "Biographie",
+            "Philosophy": "Philosophie",
+            "Religion": "Religion",
+            "Poetry": "Poésie",
+            "Self-help": "Développement personnel",
+            "Technology": "Technologie",
+            "Children": "Jeunesse",
+            "Comics": "BD / Manga",
+            "Other": "Autre"
+        }
+    },
+    en: {
+        // Setup
+        setupTitle: "Initial Setup",
+        setupDesc: "Choose where your data will be saved.",
+        setupPathLabel: "Data folder:",
+        setupLangLabel: "Interface language:",
+        browse: "Browse",
+        confirm: "Confirm",
+
+        // Error screen
+        errorTitle: "⚠️ Data folder not found",
+        errorDesc: "The configured data folder no longer exists. Please reconfigure the location.",
+        errorPathLabel: "Configured path:",
+        reconfigure: "Reconfigure",
+
+        // Main
+        search: "Search...",
+        allGenres: "All genres",
+        all: "All",
+        read: "Read",
+        unread: "Unread",
+        sortAZ: "A-Z",
+        sortZA: "Z-A",
+        addBook: "+ Add a book",
+
+        // Book form
+        addBookTitle: "Add a book",
+        editBookTitle: "Edit book",
+        title: "Title *",
+        author: "Author",
+        genre: "Genre",
+        notes: "Notes",
+        isRead: "Read",
+        cancel: "Cancel",
+        save: "Save",
+        duplicateWarning: "⚠️ A book with the same title and author already exists.",
+        selectGenre: "-- Select --",
+
+        // Delete
+        deleteTitle: "Confirm deletion",
+        deleteMessage: "Are you sure you want to delete this book?",
+        delete: "Delete",
+
+        // Stats
+        statsTitle: "Statistics",
+        totalBooks: "Total",
+        booksRead: "Read",
+        booksUnread: "Unread",
+        byGenre: "By genre",
+        byLanguage: "By language",
+        arabic: "Arabic",
+        latin: "Latin (FR/EN)",
+        notSpecified: "Not specified",
+
+        // Settings
+        settingsTitle: "Settings",
+        settingsLangLabel: "Interface language:",
+        settingsPathLabel: "Data folder:",
+
+        // Help
+        helpTitle: "Help",
+        helpUsageTitle: "How to use BookApp",
+        helpUsageContent: "BookApp allows you to manage your personal library. You can add, edit, and delete books, as well as search and filter them.",
+        helpAddTitle: "Add a book",
+        helpAddContent: "Click the \"+ Add a book\" button to add a new book. Only the title is required. The language is detected automatically: if the title contains Arabic characters, the book will be classified as Arabic, otherwise as Latin (French/English).",
+        helpSearchTitle: "Search and filters",
+        helpSearchContent: "Use the search bar to find a book by title or author. You can also filter by genre or reading status, and sort alphabetically.",
+        helpDataTitle: "Data and portability",
+        helpDataContent: "Your data is saved in the folder you chose during setup. To transfer your library to another computer, copy the BookData folder along with the BookApp.exe application.",
+        helpBackupTitle: "Backup",
+        helpBackupContent: "To backup your library, simply make a copy of the data folder (BookData). The books.db file contains all your data.",
+        helpAboutTitle: "About",
+        helpAuthor: "Author:",
+        helpYear: "Year:",
+        helpLicense: "License:",
+        helpLicenseValue: "Free use",
+        helpTech: "Technologies:",
+
+        // Empty state
+        emptyMessage: "No books in your library.",
+        emptyHint: "Click \"Add a book\" to get started.",
+
+        // Date
+        addedOn: "Added on",
+
+        // Genres
+        genres: {
+            "Fiction": "Fiction",
+            "Non-fiction": "Non-fiction",
+            "Science": "Science",
+            "History": "History",
+            "Biography": "Biography",
+            "Philosophy": "Philosophy",
+            "Religion": "Religion",
+            "Poetry": "Poetry",
+            "Self-help": "Self-help",
+            "Technology": "Technology",
+            "Children": "Children's",
+            "Comics": "Comics / Manga",
+            "Other": "Other"
+        }
+    },
+    ar: {
+        // Setup
+        setupTitle: "الإعداد الأولي",
+        setupDesc: "اختر المكان الذي سيتم فيه حفظ بياناتك.",
+        setupPathLabel: "مجلد البيانات:",
+        setupLangLabel: "لغة الواجهة:",
+        browse: "استعراض",
+        confirm: "تأكيد",
+
+        // Error screen
+        errorTitle: "⚠️ مجلد البيانات غير موجود",
+        errorDesc: "مجلد البيانات المحدد لم يعد موجوداً. يرجى إعادة تحديد الموقع.",
+        errorPathLabel: "المسار المحدد:",
+        reconfigure: "إعادة الإعداد",
+
+        // Main
+        search: "بحث...",
+        allGenres: "جميع الأنواع",
+        all: "الكل",
+        read: "مقروء",
+        unread: "غير مقروء",
+        sortAZ: "أ-ي",
+        sortZA: "ي-أ",
+        addBook: "+ إضافة كتاب",
+
+        // Book form
+        addBookTitle: "إضافة كتاب",
+        editBookTitle: "تعديل الكتاب",
+        title: "العنوان *",
+        author: "المؤلف",
+        genre: "النوع",
+        notes: "ملاحظات",
+        isRead: "مقروء",
+        cancel: "إلغاء",
+        save: "حفظ",
+        duplicateWarning: "⚠️ يوجد كتاب بنفس العنوان والمؤلف.",
+        selectGenre: "-- اختر --",
+
+        // Delete
+        deleteTitle: "تأكيد الحذف",
+        deleteMessage: "هل أنت متأكد من حذف هذا الكتاب؟",
+        delete: "حذف",
+
+        // Stats
+        statsTitle: "الإحصائيات",
+        totalBooks: "المجموع",
+        booksRead: "مقروءة",
+        booksUnread: "غير مقروءة",
+        byGenre: "حسب النوع",
+        byLanguage: "حسب اللغة",
+        arabic: "عربي",
+        latin: "لاتيني (فر/إن)",
+        notSpecified: "غير محدد",
+
+        // Settings
+        settingsTitle: "الإعدادات",
+        settingsLangLabel: "لغة الواجهة:",
+        settingsPathLabel: "مجلد البيانات:",
+
+        // Help
+        helpTitle: "مساعدة",
+        helpUsageTitle: "كيفية استخدام BookApp",
+        helpUsageContent: "يتيح لك BookApp إدارة مكتبتك الشخصية. يمكنك إضافة وتعديل وحذف الكتب، بالإضافة إلى البحث والتصفية.",
+        helpAddTitle: "إضافة كتاب",
+        helpAddContent: "انقر على زر \"+ إضافة كتاب\" لإضافة كتاب جديد. العنوان فقط مطلوب. يتم اكتشاف اللغة تلقائياً: إذا كان العنوان يحتوي على أحرف عربية، سيتم تصنيف الكتاب كعربي، وإلا كلاتيني (فرنسي/إنجليزي).",
+        helpSearchTitle: "البحث والتصفية",
+        helpSearchContent: "استخدم شريط البحث للعثور على كتاب حسب العنوان أو المؤلف. يمكنك أيضاً التصفية حسب النوع أو حالة القراءة، والترتيب أبجدياً.",
+        helpDataTitle: "البيانات والنقل",
+        helpDataContent: "يتم حفظ بياناتك في المجلد الذي اخترته أثناء الإعداد. لنقل مكتبتك إلى جهاز آخر، انسخ مجلد BookData مع تطبيق BookApp.exe.",
+        helpBackupTitle: "النسخ الاحتياطي",
+        helpBackupContent: "لعمل نسخة احتياطية من مكتبتك، قم ببساطة بنسخ مجلد البيانات (BookData). يحتوي ملف books.db على جميع بياناتك.",
+        helpAboutTitle: "حول",
+        helpAuthor: "المؤلف:",
+        helpYear: "السنة:",
+        helpLicense: "الترخيص:",
+        helpLicenseValue: "استخدام مجاني",
+        helpTech: "التقنيات:",
+
+        // Empty state
+        emptyMessage: "لا توجد كتب في مكتبتك.",
+        emptyHint: "انقر على \"+ إضافة كتاب\" للبدء.",
+
+        // Date
+        addedOn: "أضيف في",
+
+        // Genres
+        genres: {
+            "Fiction": "خيال",
+            "Non-fiction": "غير خيالي",
+            "Science": "علوم",
+            "History": "تاريخ",
+            "Biography": "سيرة ذاتية",
+            "Philosophy": "فلسفة",
+            "Religion": "دين",
+            "Poetry": "شعر",
+            "Self-help": "تطوير الذات",
+            "Technology": "تكنولوجيا",
+            "Children": "أطفال",
+            "Comics": "قصص مصورة / مانغا",
+            "Other": "أخرى"
+        }
+    }
+};
+
+const GENRES = [
+    "Fiction",
+    "Non-fiction", 
+    "Science",
+    "History",
+    "Biography",
+    "Philosophy",
+    "Religion",
+    "Poetry",
+    "Self-help",
+    "Technology",
+    "Children",
+    "Comics",
+    "Other"
+];
 
 // Tauri API - initialized after DOM loads
 let invoke, open, join;
@@ -11,47 +335,60 @@ let sortAscending = true;
 let editingBookId = null;
 let deleteBookId = null;
 
-// DOM Elements
-const setupScreen = document.getElementById('setup-screen');
-const errorScreen = document.getElementById('error-screen');
-const mainScreen = document.getElementById('main-screen');
-const dataPathInput = document.getElementById('data-path-input');
-const browseBtn = document.getElementById('browse-btn');
-const setupLanguageSelect = document.getElementById('setup-language');
-const setupConfirmBtn = document.getElementById('setup-confirm-btn');
-const reconfigureBtn = document.getElementById('reconfigure-btn');
-const errorPath = document.getElementById('error-path');
+// DOM Elements - initialized after DOM loads
+let setupScreen, errorScreen, mainScreen, dataPathInput, browseBtn;
+let setupLanguageSelect, setupConfirmBtn, reconfigureBtn, errorPath;
+let searchInput, genreFilter, readFilter, sortBtn, sortLabel;
+let addBookBtn, booksList, emptyState;
+let bookModal, bookForm, bookIdInput, bookTitleInput, bookAuthorInput;
+let bookGenreSelect, bookNotesInput, bookIsReadInput, duplicateWarning, modalTitle;
+let statsModal, statsContent, settingsModal, settingsLanguageSelect;
+let settingsDataPath, settingsBrowseBtn, settingsSaveBtn;
+let helpModal, helpContent, deleteModal;
 
-const searchInput = document.getElementById('search-input');
-const genreFilter = document.getElementById('genre-filter');
-const readFilter = document.getElementById('read-filter');
-const sortBtn = document.getElementById('sort-btn');
-const sortLabel = document.getElementById('sort-label');
-const addBookBtn = document.getElementById('add-book-btn');
-const booksList = document.getElementById('books-list');
-const emptyState = document.getElementById('empty-state');
+// Initialize DOM references
+function initDOMElements() {
+    setupScreen = document.getElementById('setup-screen');
+    errorScreen = document.getElementById('error-screen');
+    mainScreen = document.getElementById('main-screen');
+    dataPathInput = document.getElementById('data-path-input');
+    browseBtn = document.getElementById('browse-btn');
+    setupLanguageSelect = document.getElementById('setup-language');
+    setupConfirmBtn = document.getElementById('setup-confirm-btn');
+    reconfigureBtn = document.getElementById('reconfigure-btn');
+    errorPath = document.getElementById('error-path');
 
-const bookModal = document.getElementById('book-modal');
-const bookForm = document.getElementById('book-form');
-const bookIdInput = document.getElementById('book-id');
-const bookTitleInput = document.getElementById('book-title');
-const bookAuthorInput = document.getElementById('book-author');
-const bookGenreSelect = document.getElementById('book-genre');
-const bookNotesInput = document.getElementById('book-notes');
-const bookIsReadInput = document.getElementById('book-is-read');
-const duplicateWarning = document.getElementById('duplicate-warning');
-const modalTitle = document.getElementById('modal-title');
+    searchInput = document.getElementById('search-input');
+    genreFilter = document.getElementById('genre-filter');
+    readFilter = document.getElementById('read-filter');
+    sortBtn = document.getElementById('sort-btn');
+    sortLabel = document.getElementById('sort-label');
+    addBookBtn = document.getElementById('add-book-btn');
+    booksList = document.getElementById('books-list');
+    emptyState = document.getElementById('empty-state');
 
-const statsModal = document.getElementById('stats-modal');
-const statsContent = document.getElementById('stats-content');
-const settingsModal = document.getElementById('settings-modal');
-const settingsLanguageSelect = document.getElementById('settings-language');
-const settingsDataPath = document.getElementById('settings-data-path');
-const settingsBrowseBtn = document.getElementById('settings-browse-btn');
-const settingsSaveBtn = document.getElementById('settings-save-btn');
-const helpModal = document.getElementById('help-modal');
-const helpContent = document.getElementById('help-content');
-const deleteModal = document.getElementById('delete-modal');
+    bookModal = document.getElementById('book-modal');
+    bookForm = document.getElementById('book-form');
+    bookIdInput = document.getElementById('book-id');
+    bookTitleInput = document.getElementById('book-title');
+    bookAuthorInput = document.getElementById('book-author');
+    bookGenreSelect = document.getElementById('book-genre');
+    bookNotesInput = document.getElementById('book-notes');
+    bookIsReadInput = document.getElementById('book-is-read');
+    duplicateWarning = document.getElementById('duplicate-warning');
+    modalTitle = document.getElementById('modal-title');
+
+    statsModal = document.getElementById('stats-modal');
+    statsContent = document.getElementById('stats-content');
+    settingsModal = document.getElementById('settings-modal');
+    settingsLanguageSelect = document.getElementById('settings-language');
+    settingsDataPath = document.getElementById('settings-data-path');
+    settingsBrowseBtn = document.getElementById('settings-browse-btn');
+    settingsSaveBtn = document.getElementById('settings-save-btn');
+    helpModal = document.getElementById('help-modal');
+    helpContent = document.getElementById('help-content');
+    deleteModal = document.getElementById('delete-modal');
+}
 
 // Initialize Tauri APIs
 function initTauriAPIs() {
@@ -62,10 +399,18 @@ function initTauriAPIs() {
 
 // Initialize
 async function init() {
+    // Initialize DOM elements first
+    initDOMElements();
+    
+    // Initialize Tauri APIs
+    initTauriAPIs();
+    
+    // Setup event listeners immediately so UI is responsive
+    setupEventListeners();
+    populateGenreSelects();
+    applyLanguage();
+    
     try {
-        // Wait for Tauri to be ready
-        initTauriAPIs();
-        
         settings = await invoke('get_settings');
         
         if (settings) {
@@ -87,9 +432,8 @@ async function init() {
             showScreen('setup');
         }
         
+        // Re-apply language in case it changed from settings
         applyLanguage();
-        setupEventListeners();
-        populateGenreSelects();
     } catch (error) {
         console.error('Init error:', error);
         showScreen('setup');
@@ -119,6 +463,17 @@ function showScreen(screen) {
     }
 }
 
+// Helper to safely set text content
+function setText(id, text) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+}
+
+function setHtml(id, html) {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+}
+
 function applyLanguage() {
     const t = translations[currentLanguage];
     const html = document.documentElement;
@@ -133,60 +488,60 @@ function applyLanguage() {
     }
     
     // Setup screen
-    document.getElementById('setup-title').textContent = t.setupTitle;
-    document.getElementById('setup-desc').textContent = t.setupDesc;
-    document.getElementById('setup-path-label').textContent = t.setupPathLabel;
-    document.getElementById('setup-lang-label').textContent = t.setupLangLabel;
-    browseBtn.textContent = t.browse;
-    setupConfirmBtn.textContent = t.confirm;
+    setText('setup-title', t.setupTitle);
+    setText('setup-desc', t.setupDesc);
+    setText('setup-path-label', t.setupPathLabel);
+    setText('setup-lang-label', t.setupLangLabel);
+    if (browseBtn) browseBtn.textContent = t.browse;
+    if (setupConfirmBtn) setupConfirmBtn.textContent = t.confirm;
     
     // Error screen
-    document.getElementById('error-title').textContent = t.errorTitle;
-    document.getElementById('error-desc').textContent = t.errorDesc;
-    document.getElementById('error-path-label').innerHTML = t.errorPathLabel + ' <span id="error-path">' + (settings?.data_path || '') + '</span>';
-    reconfigureBtn.textContent = t.reconfigure;
+    setText('error-title', t.errorTitle);
+    setText('error-desc', t.errorDesc);
+    setHtml('error-path-label', t.errorPathLabel + ' <span id="error-path">' + (settings?.data_path || '') + '</span>');
+    if (reconfigureBtn) reconfigureBtn.textContent = t.reconfigure;
     
     // Main screen
-    searchInput.placeholder = t.search;
-    document.getElementById('filter-all').textContent = t.allGenres;
-    document.getElementById('filter-all-status').textContent = t.all;
-    document.getElementById('filter-read').textContent = t.read;
-    document.getElementById('filter-unread').textContent = t.unread;
-    sortLabel.textContent = sortAscending ? t.sortAZ : t.sortZA;
-    addBookBtn.textContent = t.addBook;
+    if (searchInput) searchInput.placeholder = t.search;
+    setText('filter-all', t.allGenres);
+    setText('filter-all-status', t.all);
+    setText('filter-read', t.read);
+    setText('filter-unread', t.unread);
+    if (sortLabel) sortLabel.textContent = sortAscending ? t.sortAZ : t.sortZA;
+    if (addBookBtn) addBookBtn.textContent = t.addBook;
     
     // Book form
-    document.getElementById('label-title').textContent = t.title;
-    document.getElementById('label-author').textContent = t.author;
-    document.getElementById('label-genre').textContent = t.genre;
-    document.getElementById('label-notes').textContent = t.notes;
-    document.getElementById('label-read').textContent = t.isRead;
-    document.getElementById('cancel-btn').textContent = t.cancel;
-    document.getElementById('save-btn').textContent = t.save;
-    document.getElementById('duplicate-text').textContent = t.duplicateWarning;
+    setText('label-title', t.title);
+    setText('label-author', t.author);
+    setText('label-genre', t.genre);
+    setText('label-notes', t.notes);
+    setText('label-read', t.isRead);
+    setText('cancel-btn', t.cancel);
+    setText('save-btn', t.save);
+    setText('duplicate-text', t.duplicateWarning);
     
     // Delete modal
-    document.getElementById('delete-title').textContent = t.deleteTitle;
-    document.getElementById('delete-message').textContent = t.deleteMessage;
-    document.getElementById('delete-cancel-btn').textContent = t.cancel;
-    document.getElementById('delete-confirm-btn').textContent = t.delete;
+    setText('delete-title', t.deleteTitle);
+    setText('delete-message', t.deleteMessage);
+    setText('delete-cancel-btn', t.cancel);
+    setText('delete-confirm-btn', t.delete);
     
     // Stats modal
-    document.getElementById('stats-title').textContent = t.statsTitle;
+    setText('stats-title', t.statsTitle);
     
     // Settings modal
-    document.getElementById('settings-title').textContent = t.settingsTitle;
-    document.getElementById('settings-lang-label').textContent = t.settingsLangLabel;
-    document.getElementById('settings-path-label').textContent = t.settingsPathLabel;
-    settingsBrowseBtn.textContent = t.browse;
-    settingsSaveBtn.textContent = t.save;
+    setText('settings-title', t.settingsTitle);
+    setText('settings-lang-label', t.settingsLangLabel);
+    setText('settings-path-label', t.settingsPathLabel);
+    if (settingsBrowseBtn) settingsBrowseBtn.textContent = t.browse;
+    if (settingsSaveBtn) settingsSaveBtn.textContent = t.save;
     
     // Help modal
-    document.getElementById('help-title').textContent = t.helpTitle;
+    setText('help-title', t.helpTitle);
     
     // Empty state
-    document.getElementById('empty-message').textContent = t.emptyMessage;
-    document.getElementById('empty-hint').textContent = t.emptyHint;
+    setText('empty-message', t.emptyMessage);
+    setText('empty-hint', t.emptyHint);
     
     // Update genre selects
     populateGenreSelects();
@@ -658,5 +1013,5 @@ function setupEventListeners() {
     });
 }
 
-// Start app
-init();
+// Start app when DOM is ready
+document.addEventListener('DOMContentLoaded', init);
