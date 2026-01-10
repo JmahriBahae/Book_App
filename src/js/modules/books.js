@@ -67,7 +67,7 @@ export function renderBooks() {
     dom.booksTable.classList.remove('hidden');
     dom.emptyState.classList.add('hidden');
     
-    dom.booksList.innerHTML = filtered.map(book => {
+    dom.booksList.innerHTML = filtered.map((book, index) => {
         const genreLabel = book.genre ? t.genres[book.genre] || book.genre : '-';
         const readLabel = book.is_read ? t.read : t.unread;
         const readClass = book.is_read ? 'read' : 'unread';
@@ -76,6 +76,7 @@ export function renderBooks() {
         
         return `
             <tr data-id="${book.id}">
+                <td class="col-num">${index + 1}</td>
                 <td class="col-title">${escapeHtml(book.title)}</td>
                 <td class="col-author">${book.author ? escapeHtml(book.author) : '-'}</td>
                 <td class="col-genre">${genreLabel}</td>

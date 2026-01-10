@@ -370,19 +370,21 @@ html[dir="rtl"] .setup-form {
 
 /* Column widths */
 .books-table th:nth-child(1),
-.books-table td:nth-child(1) { width: 25%; } /* Title */
+.books-table td:nth-child(1) { width: 24px; } /* # */
 .books-table th:nth-child(2),
-.books-table td:nth-child(2) { width: 18%; } /* Author */
+.books-table td:nth-child(2) { width: 24%; } /* Title */
 .books-table th:nth-child(3),
-.books-table td:nth-child(3) { width: 12%; } /* Genre */
+.books-table td:nth-child(3) { width: 17%; } /* Author */
 .books-table th:nth-child(4),
-.books-table td:nth-child(4) { width: 10%; } /* Status */
+.books-table td:nth-child(4) { width: 12%; } /* Genre */
 .books-table th:nth-child(5),
-.books-table td:nth-child(5) { width: 12%; } /* Language */
+.books-table td:nth-child(5) { width: 10%; } /* Status */
 .books-table th:nth-child(6),
-.books-table td:nth-child(6) { width: 12%; } /* Date */
+.books-table td:nth-child(6) { width: 12%; } /* Language */
 .books-table th:nth-child(7),
-.books-table td:nth-child(7) { width: 11%; } /* Actions */
+.books-table td:nth-child(7) { width: 10%; } /* Date */
+.books-table th:nth-child(8),
+.books-table td:nth-child(8) { width: 10%; } /* Actions */
 
 .books-table td {
     padding: 8px 12px;
@@ -400,6 +402,13 @@ html[dir="rtl"] .setup-form {
 
 .books-table tbody tr:hover {
     background: #e8f4fc;
+}
+
+.books-table .col-num {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 8px 2px;
 }
 
 .books-table .col-title {
@@ -716,12 +725,14 @@ html[dir="rtl"] .help-content ul {
     }
 
     .books-table .col-lang,
-    .books-table .col-genre {
+    .books-table .col-genre,
+    .books-table .col-num {
         display: none;
     }
 
-    .books-table thead th:nth-child(3),
-    .books-table thead th:nth-child(5) {
+    .books-table thead th:nth-child(1),
+    .books-table thead th:nth-child(4),
+    .books-table thead th:nth-child(6) {
         display: none;
     }
 }
