@@ -309,6 +309,7 @@ html[dir="rtl"] .setup-form {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.875rem;
+    table-layout: fixed;
 }
 
 .books-table thead {
@@ -330,6 +331,22 @@ html[dir="rtl"] .setup-form {
     border-bottom: 1px solid var(--border-color);
 }
 
+/* Column widths */
+.books-table th:nth-child(1),
+.books-table td:nth-child(1) { width: 25%; } /* Title */
+.books-table th:nth-child(2),
+.books-table td:nth-child(2) { width: 18%; } /* Author */
+.books-table th:nth-child(3),
+.books-table td:nth-child(3) { width: 12%; } /* Genre */
+.books-table th:nth-child(4),
+.books-table td:nth-child(4) { width: 10%; } /* Status */
+.books-table th:nth-child(5),
+.books-table td:nth-child(5) { width: 12%; } /* Language */
+.books-table th:nth-child(6),
+.books-table td:nth-child(6) { width: 12%; } /* Date */
+.books-table th:nth-child(7),
+.books-table td:nth-child(7) { width: 11%; } /* Actions */
+
 .books-table td {
     padding: 8px 12px;
     border-bottom: 1px solid var(--border-color);
@@ -342,7 +359,6 @@ html[dir="rtl"] .setup-form {
 
 .books-table .col-title {
     font-weight: 500;
-    max-width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -350,10 +366,16 @@ html[dir="rtl"] .setup-form {
 
 .books-table .col-author {
     color: var(--text-secondary);
-    max-width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* RTL fix: show beginning of text, ellipsis at end */
+html[dir="rtl"] .books-table .col-title,
+html[dir="rtl"] .books-table .col-author {
+    direction: ltr;
+    text-align: right;
 }
 
 .books-table .col-genre {
