@@ -2,7 +2,7 @@
 import { translations } from './translations.js';
 import { state, dom } from './state.js';
 import { applyLanguage } from './ui.js';
-import { renderBooks, openBookModal, closeBookModal, handleBookSubmit, openDeleteModal, closeDeleteModal, confirmDelete } from './books.js';
+import { renderBooks, openBookModal, closeBookModal, handleBookSubmit, openDeleteModal, closeDeleteModal, confirmDelete, openNotesModal, closeNotesModal } from './books.js';
 import { openStatsModal, closeStatsModal, openSettingsModal, closeSettingsModal, saveSettingsFromModal, openHelpModal, closeHelpModal, browseFolder, closeAllModals } from './modals.js';
 
 export function setupEventListeners(confirmSetup) {
@@ -57,8 +57,14 @@ export function setupEventListeners(confirmSetup) {
     // Book list click delegation
     if (dom.booksList) {
         dom.booksList.addEventListener('click', (e) => {
+            const notesBtn = e.target.closest('.notes-btn');
             const editBtn = e.target.closest('.edit-btn');
             const deleteBtn = e.target.closest('.delete-btn');
+            
+            if (notesBtn) {
+                const bookId = parseInt(notesBtn.dataset.id);
+                openNotesModal(bookId);
+            }
             
             if (editBtn) {
                 const bookId = parseInt(editBtn.dataset.id);
@@ -124,8 +130,12 @@ export function setupEventListeners(confirmSetup) {
     if (deleteCancelBtn) deleteCancelBtn.addEventListener('click', closeDeleteModal);
     if (deleteConfirmBtn) deleteConfirmBtn.addEventListener('click', confirmDelete);
     
+    // Notes modal
+    const notesClose = document.getElementById('notes-close');
+    if (notesClose) notesClose.addEventListener('click', closeNotesModal);
+    
     // Close modals on backdrop click
-    const modals = [dom.bookModal, dom.statsModal, dom.settingsModal, dom.helpModal, dom.deleteModal];
+    const modals = [dom.bookModal, dom.statsModal, dom.settingsModal, dom.helpModal, dom.deleteModal, dom.notesModal];
     modals.forEach(modal => {
         if (modal) {
             modal.addEventListener('click', (e) => {

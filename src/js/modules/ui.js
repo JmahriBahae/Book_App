@@ -81,6 +81,9 @@ export function applyLanguage() {
     setText('delete-cancel-btn', t.cancel);
     setText('delete-confirm-btn', t.delete);
     
+    // Notes modal
+    setText('notes-title', t.notesTitle);
+    
     // Stats modal
     setText('stats-title', t.statsTitle);
     

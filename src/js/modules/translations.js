@@ -43,6 +43,9 @@ export const translations = {
         deleteMessage: "Êtes-vous sûr de vouloir supprimer ce livre ?",
         delete: "Supprimer",
 
+        // Notes modal
+        notesTitle: "Notes",
+
         // Stats
         statsTitle: "Statistiques",
         totalBooks: "Total",
@@ -99,6 +102,7 @@ export const translations = {
         thDate: "Ajouté",
 
         // Book card actions
+        notesBtn: "Voir les notes",
         editBtn: "Modifier",
         deleteBtn: "Supprimer",
 
@@ -162,6 +166,9 @@ export const translations = {
         deleteMessage: "Are you sure you want to delete this book?",
         delete: "Delete",
 
+        // Notes modal
+        notesTitle: "Notes",
+
         // Stats
         statsTitle: "Statistics",
         totalBooks: "Total",
@@ -218,6 +225,7 @@ export const translations = {
         thDate: "Added",
 
         // Book card actions
+        notesBtn: "View notes",
         editBtn: "Edit",
         deleteBtn: "Delete",
 
@@ -281,6 +289,9 @@ export const translations = {
         deleteMessage: "هل أنت متأكد من حذف هذا الكتاب؟",
         delete: "حذف",
 
+        // Notes modal
+        notesTitle: "ملاحظات",
+
         // Stats
         statsTitle: "الإحصائيات",
         totalBooks: "المجموع",
@@ -337,6 +348,7 @@ export const translations = {
         thDate: "أضيف",
 
         // Book card actions
+        notesBtn: "عرض الملاحظات",
         editBtn: "تعديل",
         deleteBtn: "حذف",
 

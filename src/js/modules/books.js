@@ -77,6 +77,7 @@ export function renderBooks() {
                 <td class="col-lang">${langLabel}</td>
                 <td class="col-date">${dateFormatted}</td>
                 <td class="col-actions">
+                    ${book.notes ? `<button class="btn-icon notes-btn" title="${t.notesBtn}" data-id="${book.id}">👁️</button>` : ''}
                     <button class="btn-icon edit-btn" title="${t.editBtn}" data-id="${book.id}">✏️</button>
                     <button class="btn-icon delete-btn" title="${t.deleteBtn}" data-id="${book.id}">🗑️</button>
                 </td>
@@ -154,6 +155,20 @@ export async function handleBookSubmit(e) {
     } catch (error) {
         console.error('Save book error:', error);
     }
+}
+
+// Open notes modal
+export function openNotesModal(bookId) {
+    const book = state.books.find(b => b.id === bookId);
+    if (!book || !book.notes) return;
+    
+    if (dom.notesContent) dom.notesContent.textContent = book.notes;
+    if (dom.notesModal) dom.notesModal.classList.remove('hidden');
+}
+
+// Close notes modal
+export function closeNotesModal() {
+    if (dom.notesModal) dom.notesModal.classList.add('hidden');
 }
 
 // Open delete confirmation modal

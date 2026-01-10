@@ -113,7 +113,7 @@ export async function browseFolder(inputElement) {
 
 // Close all modals
 export function closeAllModals() {
-    const modals = [dom.bookModal, dom.statsModal, dom.settingsModal, dom.helpModal, dom.deleteModal];
+    const modals = [dom.bookModal, dom.statsModal, dom.settingsModal, dom.helpModal, dom.deleteModal, dom.notesModal];
     modals.forEach(modal => {
         if (modal) modal.classList.add('hidden');
     });

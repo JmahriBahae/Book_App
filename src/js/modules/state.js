@@ -58,7 +58,9 @@ export const dom = {
     settingsSaveBtn: null,
     helpModal: null,
     helpContent: null,
-    deleteModal: null
+    deleteModal: null,
+    notesModal: null,
+    notesContent: null
 };
 
 // Initialize DOM references
@@ -104,4 +106,6 @@ export function initDOMElements() {
     dom.helpModal = document.getElementById('help-modal');
     dom.helpContent = document.getElementById('help-content');
     dom.deleteModal = document.getElementById('delete-modal');
+    dom.notesModal = document.getElementById('notes-modal');
+    dom.notesContent = document.getElementById('notes-content');
 }
