@@ -3,7 +3,7 @@ import { translations } from './translations.js';
 import { state, dom } from './state.js';
 import * as api from './api.js';
 import { applyLanguage } from './ui.js';
-import { renderBooks } from './books.js';
+import { renderBooks, loadBooks } from './books.js';
 
 // Stats Modal
 export async function openStatsModal() {
@@ -75,12 +75,19 @@ export function closeSettingsModal() {
 export async function saveSettingsFromModal() {
     const newLanguage = dom.settingsLanguageSelect?.value || 'fr';
     const newPath = dom.settingsDataPath?.value || '';
+    const oldPath = state.settings?.data_path || '';
     
     try {
         await api.saveSettings(newPath, newLanguage);
         
         state.currentLanguage = newLanguage;
         state.settings = { data_path: newPath, language: newLanguage };
+        
+        // If data path changed, reinitialize database and reload books
+        if (newPath !== oldPath) {
+            await api.initDatabase(newPath);
+            await loadBooks();
+        }
         
         applyLanguage();
         renderBooks();
