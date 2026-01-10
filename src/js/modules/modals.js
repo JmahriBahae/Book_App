@@ -3,6 +3,7 @@ import { translations } from './translations.js';
 import { state, dom } from './state.js';
 import * as api from './api.js';
 import { applyLanguage } from './ui.js';
+import { renderBooks } from './books.js';
 
 // Stats Modal
 export async function openStatsModal() {
@@ -82,6 +83,7 @@ export async function saveSettingsFromModal() {
         state.settings = { data_path: newPath, language: newLanguage };
         
         applyLanguage();
+        renderBooks();
         closeSettingsModal();
     } catch (error) {
         console.error('Save settings error:', error);
