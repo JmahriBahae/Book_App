@@ -167,6 +167,9 @@ export function updateHelpContent() {
             <h3>${t.helpSearchTitle}</h3>
             <p>${t.helpSearchContent}</p>
             
+            <h3>${t.helpNotesTitle}</h3>
+            <p>${t.helpNotesContent}</p>
+            
             <h3>${t.helpDataTitle}</h3>
             <p>${t.helpDataContent}</p>
             

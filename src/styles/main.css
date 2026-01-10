@@ -390,15 +390,24 @@ html[dir="rtl"] .setup-form {
     vertical-align: middle;
 }
 
+.books-table tbody tr:nth-child(odd) {
+    background: #ffffff;
+}
+
+.books-table tbody tr:nth-child(even) {
+    background: #f5f7f9;
+}
+
 .books-table tbody tr:hover {
-    background: var(--background);
+    background: #e8f4fc;
 }
 
 .books-table .col-title {
-    font-weight: 500;
+    font-weight: 600;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: var(--text-primary);
 }
 
 .books-table .col-author {
@@ -417,6 +426,7 @@ html[dir="rtl"] .books-table .col-author {
 
 .books-table .col-genre {
     color: var(--text-secondary);
+    font-size: 0.85rem;
 }
 
 .books-table .col-status {
@@ -430,12 +440,12 @@ html[dir="rtl"] .books-table .col-author {
 
 .books-table .col-lang {
     color: var(--text-secondary);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
 }
 
 .books-table .col-date {
     color: var(--text-secondary);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     white-space: nowrap;
 }
 
