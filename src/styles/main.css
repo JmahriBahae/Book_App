@@ -61,6 +61,12 @@ html[dir="rtl"] .modal-close {
     min-height: 100vh;
 }
 
+#main-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
 .hidden {
     display: none !important;
 }
@@ -241,9 +247,7 @@ html[dir="rtl"] .setup-form {
     justify-content: space-between;
     align-items: center;
     box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    flex-shrink: 0;
 }
 
 .app-title {
@@ -264,6 +268,7 @@ html[dir="rtl"] .setup-form {
     align-items: center;
     gap: 16px;
     flex-wrap: wrap;
+    flex-shrink: 0;
 }
 
 .search-filter {
@@ -302,6 +307,8 @@ html[dir="rtl"] .setup-form {
 /* Books Container */
 .books-container {
     padding: 0 24px 24px;
+    flex: 1;
+    overflow-y: auto;
 }
 
 /* Books Table */
