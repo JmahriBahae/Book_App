@@ -90,6 +90,14 @@ export const translations = {
         settingsBtn: "Paramètres",
         helpBtn: "Aide",
 
+        // Table headers
+        thTitle: "Titre",
+        thAuthor: "Auteur",
+        thGenre: "Genre",
+        thStatus: "Statut",
+        thLang: "Langue",
+        thDate: "Ajouté",
+
         // Book card actions
         editBtn: "Modifier",
         deleteBtn: "Supprimer",
@@ -201,6 +209,14 @@ export const translations = {
         settingsBtn: "Settings",
         helpBtn: "Help",
 
+        // Table headers
+        thTitle: "Title",
+        thAuthor: "Author",
+        thGenre: "Genre",
+        thStatus: "Status",
+        thLang: "Language",
+        thDate: "Added",
+
         // Book card actions
         editBtn: "Edit",
         deleteBtn: "Delete",
@@ -311,6 +327,14 @@ export const translations = {
         statsBtn: "الإحصائيات",
         settingsBtn: "الإعدادات",
         helpBtn: "مساعدة",
+
+        // Table headers
+        thTitle: "العنوان",
+        thAuthor: "المؤلف",
+        thGenre: "النوع",
+        thStatus: "الحالة",
+        thLang: "اللغة",
+        thDate: "أضيف",
 
         // Book card actions
         editBtn: "تعديل",

@@ -49,40 +49,38 @@ export function renderBooks() {
     const filtered = getFilteredBooks();
     const t = translations[state.currentLanguage];
     
-    if (!dom.booksList || !dom.emptyState) return;
+    if (!dom.booksList || !dom.emptyState || !dom.booksTable) return;
     
     if (filtered.length === 0) {
         dom.booksList.innerHTML = '';
+        dom.booksTable.classList.add('hidden');
         dom.emptyState.classList.remove('hidden');
         return;
     }
     
+    dom.booksTable.classList.remove('hidden');
     dom.emptyState.classList.add('hidden');
     
     dom.booksList.innerHTML = filtered.map(book => {
-        const genreLabel = book.genre ? t.genres[book.genre] || book.genre : '';
+        const genreLabel = book.genre ? t.genres[book.genre] || book.genre : '-';
         const readLabel = book.is_read ? t.read : t.unread;
         const readClass = book.is_read ? 'read' : 'unread';
         const langLabel = book.language === 'arabic' ? t.arabic : t.latin;
-        const langClass = book.language === 'arabic' ? 'arabic' : 'latin';
         const dateFormatted = formatDate(book.date_added);
         
         return `
-            <div class="book-card" data-id="${book.id}">
-                <div class="book-card-actions">
+            <tr data-id="${book.id}">
+                <td class="col-title">${escapeHtml(book.title)}</td>
+                <td class="col-author">${book.author ? escapeHtml(book.author) : '-'}</td>
+                <td class="col-genre">${genreLabel}</td>
+                <td class="col-status ${readClass}">${readLabel}</td>
+                <td class="col-lang">${langLabel}</td>
+                <td class="col-date">${dateFormatted}</td>
+                <td class="col-actions">
                     <button class="btn-icon edit-btn" title="${t.editBtn}" data-id="${book.id}">✏️</button>
                     <button class="btn-icon delete-btn" title="${t.deleteBtn}" data-id="${book.id}">🗑️</button>
-                </div>
-                <div class="book-card-title">${escapeHtml(book.title)}</div>
-                ${book.author ? `<div class="book-card-author">${escapeHtml(book.author)}</div>` : ''}
-                <div class="book-card-meta">
-                    ${genreLabel ? `<span class="book-card-badge">${genreLabel}</span>` : ''}
-                    <span class="book-card-badge ${readClass}">${readLabel}</span>
-                    <span class="book-card-badge ${langClass}">${langLabel}</span>
-                </div>
-                ${book.notes ? `<div class="book-card-notes">${escapeHtml(book.notes)}</div>` : ''}
-                <div class="book-card-date">${t.addedOn} ${dateFormatted}</div>
-            </div>
+                </td>
+            </tr>
         `;
     }).join('');
 }

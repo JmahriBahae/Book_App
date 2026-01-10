@@ -99,6 +99,14 @@ export function applyLanguage() {
     setText('settings-btn-label', t.settingsBtn);
     setText('help-btn-label', t.helpBtn);
     
+    // Table headers
+    setText('th-title', t.thTitle);
+    setText('th-author', t.thAuthor);
+    setText('th-genre', t.thGenre);
+    setText('th-status', t.thStatus);
+    setText('th-lang', t.thLang);
+    setText('th-date', t.thDate);
+
     // Empty state
     setText('empty-message', t.emptyMessage);
     setText('empty-hint', t.emptyHint);

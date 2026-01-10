@@ -88,7 +88,20 @@
 
         <!-- Books List -->
         <div class="books-container">
-            <div id="books-list" class="books-list"></div>
+            <table id="books-table" class="books-table">
+                <thead>
+                    <tr>
+                        <th id="th-title">Titre</th>
+                        <th id="th-author">Auteur</th>
+                        <th id="th-genre">Genre</th>
+                        <th id="th-status">Statut</th>
+                        <th id="th-lang">Langue</th>
+                        <th id="th-date">Ajouté</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="books-list"></tbody>
+            </table>
             <div id="empty-state" class="empty-state hidden">
                 <p id="empty-message">Aucun livre dans votre bibliothèque.</p>
                 <p id="empty-hint">Cliquez sur "Ajouter un livre" pour commencer.</p>

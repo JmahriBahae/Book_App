@@ -32,6 +32,7 @@ export const dom = {
     sortBtn: null,
     sortLabel: null,
     addBookBtn: null,
+    booksTable: null,
     booksList: null,
     emptyState: null,
     
@@ -78,6 +79,7 @@ export function initDOMElements() {
     dom.sortBtn = document.getElementById('sort-btn');
     dom.sortLabel = document.getElementById('sort-label');
     dom.addBookBtn = document.getElementById('add-book-btn');
+    dom.booksTable = document.getElementById('books-table');
     dom.booksList = document.getElementById('books-list');
     dom.emptyState = document.getElementById('empty-state');
 

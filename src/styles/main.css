@@ -304,105 +304,102 @@ html[dir="rtl"] .setup-form {
     padding: 0 24px 24px;
 }
 
-.books-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 16px;
+/* Books Table */
+.books-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
 }
 
-/* Book Card */
-.book-card {
+.books-table thead {
+    position: sticky;
+    top: 0;
     background: var(--surface);
-    border-radius: var(--radius);
-    padding: 20px;
-    box-shadow: var(--shadow);
-    position: relative;
-    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 10;
+    box-shadow: 0 1px 0 var(--border-color);
 }
 
-.book-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.book-card-title {
-    font-size: 1.1rem;
+.books-table th {
+    text-align: left;
+    padding: 10px 12px;
     font-weight: 600;
-    margin-bottom: 8px;
-    padding-right: 60px;
-}
-
-html[dir="rtl"] .book-card-title {
-    padding-right: 0;
-    padding-left: 60px;
-}
-
-.book-card-author {
     color: var(--text-secondary);
-    margin-bottom: 8px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.book-card-meta {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 8px;
+.books-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
 }
 
-.book-card-badge {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.85rem;
+.books-table tbody tr:hover {
     background: var(--background);
+}
+
+.books-table .col-title {
+    font-weight: 500;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.books-table .col-author {
+    color: var(--text-secondary);
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.books-table .col-genre {
     color: var(--text-secondary);
 }
 
-.book-card-badge.read {
-    background: #d4edda;
+.books-table .col-status {
+    white-space: nowrap;
+}
+
+.books-table .col-status.read {
     color: #155724;
 }
 
-.book-card-badge.unread {
-    background: #fff3cd;
+.books-table .col-status.unread {
     color: #856404;
 }
 
-.book-card-badge.arabic {
-    background: #e2e3f3;
-    color: #383d8a;
-}
-
-.book-card-badge.latin {
-    background: #d1e7dd;
-    color: #0f5132;
-}
-
-.book-card-notes {
-    font-size: 0.9rem;
+.books-table .col-lang {
     color: var(--text-secondary);
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid var(--border-color);
-}
-
-.book-card-date {
     font-size: 0.8rem;
+}
+
+.books-table .col-date {
     color: var(--text-secondary);
-    margin-top: 8px;
+    font-size: 0.8rem;
+    white-space: nowrap;
 }
 
-.book-card-actions {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    display: flex;
-    gap: 4px;
+.books-table .col-actions {
+    white-space: nowrap;
+    text-align: right;
 }
 
-.book-card-actions .btn-icon {
-    font-size: 1rem;
-    padding: 6px;
+.books-table .col-actions .btn-icon {
+    padding: 4px 6px;
+    font-size: 0.85rem;
+}
+
+html[dir="rtl"] .books-table th,
+html[dir="rtl"] .books-table td {
+    text-align: right;
+}
+
+html[dir="rtl"] .books-table .col-actions {
+    text-align: left;
 }
 
 /* Empty State */
@@ -618,7 +615,7 @@ html[dir="rtl"] .help-content ul {
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .toolbar {
         flex-direction: column;
         align-items: stretch;
@@ -638,12 +635,22 @@ html[dir="rtl"] .help-content ul {
         grid-template-columns: 1fr;
     }
 
-    .book-card-title {
-        padding-right: 50px;
+    .books-table {
+        font-size: 0.8rem;
     }
 
-    html[dir="rtl"] .book-card-title {
-        padding-left: 50px;
-        padding-right: 0;
+    .books-table th,
+    .books-table td {
+        padding: 6px 8px;
+    }
+
+    .books-table .col-lang,
+    .books-table .col-genre {
+        display: none;
+    }
+
+    .books-table thead th:nth-child(3),
+    .books-table thead th:nth-child(5) {
+        display: none;
     }
 }
