@@ -23,8 +23,8 @@ export const translations = {
         unread: "Non lu",
         sortAZ: "A-Z",
         sortZA: "Z-A",
-        filterLatin: "Latin",
-        filterArabic: "عربي",
+        filterLatin: "Latin (FR/EN)",
+        filterArabic: "Arabe",
         addBook: "+ Ajouter un livre",
 
         // Book form
@@ -148,8 +148,8 @@ export const translations = {
         unread: "Unread",
         sortAZ: "A-Z",
         sortZA: "Z-A",
-        filterLatin: "Latin",
-        filterArabic: "عربي",
+        filterLatin: "Latin (FR/EN)",
+        filterArabic: "Arabic",
         addBook: "+ Add a book",
 
         // Book form
@@ -273,7 +273,7 @@ export const translations = {
         unread: "غير مقروء",
         sortAZ: "أ-ي",
         sortZA: "ي-أ",
-        filterLatin: "Latin",
+        filterLatin: "لاتيني (فر/إن)",
         filterArabic: "عربي",
         addBook: "+ إضافة كتاب",
 
