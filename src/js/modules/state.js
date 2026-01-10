@@ -29,6 +29,8 @@ export const dom = {
     searchInput: null,
     genreFilter: null,
     readFilter: null,
+    filterLatin: null,
+    filterArabic: null,
     sortBtn: null,
     sortLabel: null,
     addBookBtn: null,
@@ -78,6 +80,8 @@ export function initDOMElements() {
     dom.searchInput = document.getElementById('search-input');
     dom.genreFilter = document.getElementById('genre-filter');
     dom.readFilter = document.getElementById('read-filter');
+    dom.filterLatin = document.getElementById('filter-latin');
+    dom.filterArabic = document.getElementById('filter-arabic');
     dom.sortBtn = document.getElementById('sort-btn');
     dom.sortLabel = document.getElementById('sort-label');
     dom.addBookBtn = document.getElementById('add-book-btn');

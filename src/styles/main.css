@@ -304,6 +304,27 @@ html[dir="rtl"] .setup-form {
     padding: 10px 16px;
 }
 
+.lang-filters {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.checkbox-inline {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.checkbox-inline input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
 /* Books Container */
 .books-container {
     padding: 0 24px 24px;

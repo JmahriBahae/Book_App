@@ -40,6 +40,12 @@ export function setupEventListeners(confirmSetup) {
     if (dom.readFilter) {
         dom.readFilter.addEventListener('change', renderBooks);
     }
+    if (dom.filterLatin) {
+        dom.filterLatin.addEventListener('change', renderBooks);
+    }
+    if (dom.filterArabic) {
+        dom.filterArabic.addEventListener('change', renderBooks);
+    }
     if (dom.sortBtn) {
         dom.sortBtn.addEventListener('click', () => {
             state.sortAscending = !state.sortAscending;

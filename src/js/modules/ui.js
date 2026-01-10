@@ -64,6 +64,8 @@ export function applyLanguage() {
     setText('filter-unread', t.unread);
     if (dom.sortLabel) dom.sortLabel.textContent = state.sortAscending ? t.sortAZ : t.sortZA;
     if (dom.addBookBtn) dom.addBookBtn.textContent = t.addBook;
+    setText('filter-latin-label', t.filterLatin);
+    setText('filter-arabic-label', t.filterArabic);
     
     // Book form
     setText('label-title', t.title);

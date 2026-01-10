@@ -19,6 +19,8 @@ export function getFilteredBooks() {
     const searchTerm = dom.searchInput?.value.toLowerCase() || '';
     const genreFilterValue = dom.genreFilter?.value || '';
     const readFilterValue = dom.readFilter?.value || '';
+    const showLatin = dom.filterLatin?.checked ?? true;
+    const showArabic = dom.filterArabic?.checked ?? true;
     
     let filtered = state.books.filter(book => {
         const matchesSearch = !searchTerm || 
@@ -31,7 +33,11 @@ export function getFilteredBooks() {
         if (readFilterValue === 'read') matchesRead = book.is_read;
         if (readFilterValue === 'unread') matchesRead = !book.is_read;
         
-        return matchesSearch && matchesGenre && matchesRead;
+        let matchesLang = true;
+        if (book.language === 'latin' && !showLatin) matchesLang = false;
+        if (book.language === 'arabic' && !showArabic) matchesLang = false;
+        
+        return matchesSearch && matchesGenre && matchesRead && matchesLang;
     });
     
     // Sort
