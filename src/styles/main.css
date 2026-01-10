@@ -387,11 +387,8 @@ html[dir="rtl"] .books-table .col-author {
 }
 
 .books-table .col-status.read {
-    color: #155724;
-}
-
-.books-table .col-status.unread {
-    color: #856404;
+    color: #28a745;
+    font-weight: 500;
 }
 
 .books-table .col-lang {
