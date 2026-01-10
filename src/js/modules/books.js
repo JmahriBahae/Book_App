@@ -77,7 +77,7 @@ export function renderBooks() {
                 <td class="col-lang">${langLabel}</td>
                 <td class="col-date">${dateFormatted}</td>
                 <td class="col-actions">
-                    ${book.notes ? `<button class="btn-icon notes-btn" title="${t.notesBtn}" data-id="${book.id}">👁️</button>` : ''}
+                    <span class="action-slot">${book.notes ? `<button class="btn-icon notes-btn" title="${t.notesBtn}" data-id="${book.id}">👁️</button>` : ''}</span>
                     <button class="btn-icon edit-btn" title="${t.editBtn}" data-id="${book.id}">✏️</button>
                     <button class="btn-icon delete-btn" title="${t.deleteBtn}" data-id="${book.id}">🗑️</button>
                 </td>
